@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pesona_indonesia/model/data_wisata.dart';
 
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key});
+  final TempatWisata tempatWisata;
+  const DetailScreen({super.key, required this.tempatWisata});
 
   @override
   Widget build(BuildContext context) {
@@ -11,11 +13,11 @@ class DetailScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Image.asset('assets/images/panorama.jpg'),
+                Image.asset(tempatWisata.gambar),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Mountain Train Tour',
+                    tempatWisata.nama,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Nexa',
@@ -33,7 +35,7 @@ class DetailScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              'Sukabumi',
+                              tempatWisata.lokasi,
                               style: TextStyle(fontWeight: FontWeight.w600),
                             ),
                           ),
@@ -45,7 +47,7 @@ class DetailScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              'Rp 400.000',
+                              tempatWisata.harga,
                               style: TextStyle(fontWeight: FontWeight.w600),
                             ),
                           )
@@ -60,7 +62,7 @@ class DetailScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              '4.3',
+                              tempatWisata.rating,
                               style: TextStyle(fontWeight: FontWeight.w600),
                             ),
                           )
@@ -79,7 +81,7 @@ class DetailScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(9.0),
                   child: Text(
-                    'Mountain Tour di Sukabumi adalah pengalaman mendaki gunung yang tak terlupakan. Peserta akan menikmati pemandangan alam yang indah, udara pegunungan yang segar, serta petualangan berkemah di alam terbuka. Cocok untuk pecinta alam dan pencari petualangan, acara ini menawarkan keseruan dan ketenangan sekaligus.',
+                    tempatWisata.deskripsi,
                     style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20),
                     textAlign: TextAlign.justify,
                   ),
@@ -94,14 +96,14 @@ class DetailScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(25),
-                          child: Image.asset('assets/images/train.jpg'),
+                          child: Image.network(tempatWisata.urlGambar[0]),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: ClipRRect(
                             borderRadius:BorderRadius.circular(25),
-                            child: Image.asset('assets/images/panorama.jpg'),
+                            child: Image.network(tempatWisata.urlGambar[1]),
                         ),
                       )
                     ],
